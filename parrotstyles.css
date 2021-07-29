@@ -1,0 +1,46 @@
+/*Content*/
+
+.title{
+    font-size: 50px;
+    font-family: 'Roboto', sans-serif;
+    color: #A7E9AF;
+}
+
+.container{
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-items:center;
+    width: 100vw;
+    height: 100vh;
+    background-color:#eef9bf;
+    
+}
+.cardbox{
+    display: flex;
+    flex-wrap: wrap;
+    width: 872px;
+    height: 326px; 
+    justify-content: space-between;
+
+}
+
+.cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 117px;
+    height: 146px;
+    background-color: #a7e9af;
+    margin-right: 6px;
+    margin-bottom: 34px;
+    border-radius: 5px;
+    border: 1px solid #99CEA8;
+}
+.front-parrot{
+    width: 100px;
+    height: 100px;
+    justify-content: ;
+}
