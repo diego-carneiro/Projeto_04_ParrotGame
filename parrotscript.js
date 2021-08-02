@@ -1,7 +1,11 @@
 let qtdCartas;
 let todasAsCartas = [];
 let cardOrderRandom = [];
-const cardOrder = [`<div class="card">
+let cartasSelecionadas = [];
+let acertos =0;
+
+const cardOrder = [
+`<div class="card" onclick="armazenarCarta(this)">
 <div class="front-face face">
   <img class="front-parrot" src="front.png"/>
 </div>
@@ -9,7 +13,7 @@ const cardOrder = [`<div class="card">
   <img src="bobrossparrot.gif"/>
 </div>
 </div>`,
-`<div class="card">
+`<div class="card" onclick="armazenarCarta(this)">
 <div class="front-face face">
   <img class="front-parrot" src="front.png"/>
 </div>
@@ -17,7 +21,87 @@ const cardOrder = [`<div class="card">
   <img src="bobrossparrot.gif"/>
 </div>
 </div>`,
-`<div class="card">
+`<div class="card" onclick="armazenarCarta(this)">
+<div class="front-face face">
+  <img class="front-parrot" src="front.png"/>
+</div>
+<div class="back-face face">
+  <img src="explodyparrot.gif"/>
+</div>
+</div>`,
+`<div class="card" onclick="armazenarCarta(this)">
+<div class="front-face face">
+  <img class="front-parrot" src="front.png"/>
+</div>
+<div class="back-face face">
+  <img src="explodyparrot.gif"/>
+</div>
+</div>`,
+`<div class="card" onclick="armazenarCarta(this)">
+<div class="front-face face">
+  <img class="front-parrot" src="front.png"/>
+</div>
+<div class="back-face face">
+  <img src="fiestaparrot.gif"/>
+</div>
+</div>`,
+`<div class="card" onclick="armazenarCarta(this)">
+<div class="front-face face">
+  <img class="front-parrot" src="front.png"/>
+</div>
+<div class="back-face face">
+  <img src="fiestaparrot.gif"/>
+</div>
+</div>`,
+`<div class="card" onclick="armazenarCarta(this)">
+<div class="front-face face">
+  <img class="front-parrot" src="front.png"/>
+</div>
+<div class="back-face face">
+  <img src="metalparrot.gif"/>
+</div>
+</div>`,
+`<div class="card" onclick="armazenarCarta(this)">
+<div class="front-face face">
+  <img class="front-parrot" src="front.png"/>
+</div>
+<div class="back-face face">
+  <img src="metalparrot.gif"/>
+</div>
+</div>`,
+`<div class="card" onclick="armazenarCarta(this)">
+<div class="front-face face">
+  <img class="front-parrot" src="front.png"/>
+</div>
+<div class="back-face face">
+  <img src="revertitparrot.gif"/>
+</div>
+</div>`,
+`<div class="card" onclick="armazenarCarta(this)">
+<div class="front-face face">
+  <img class="front-parrot" src="front.png"/>
+</div>
+<div class="back-face face">
+  <img src="revertitparrot.gif"/>
+</div>
+</div>`,
+`<div class="card" onclick="armazenarCarta(this)">
+<div class="front-face face">
+  <img class="front-parrot" src="front.png"/>
+</div>
+<div class="back-face face">
+  <img src="tripletsparrot.gif"/>
+</div>
+</div>`,
+`<div class="card" onclick="armazenarCarta(this)">
+<div class="front-face face">
+  <img class="front-parrot" src="front.png"/>
+</div>
+<div class="back-face face">
+  <img src="tripletsparrot.gif"/>
+</div>
+</div>`,
+`<div class="card" onclick="armazenarCarta(this)">
 <div class="front-face face">
   <img class="front-parrot" src="front.png"/>
 </div>
@@ -25,87 +109,7 @@ const cardOrder = [`<div class="card">
   <img src="unicornparrot.gif"/>
 </div>
 </div>`,
-`<div class="card">
-<div class="front-face face">
-  <img class="front-parrot" src="front.png"/>
-</div>
-<div class="back-face face">
-  <img src="explodyparrot.gif"/>
-</div>
-</div>`,
-`<div class="card">
-<div class="front-face face">
-  <img class="front-parrot" src="front.png"/>
-</div>
-<div class="back-face face">
-  <img src="explodyparrot.gif"/>
-</div>
-</div>`,
-`<div class="card">
-<div class="front-face face">
-  <img class="front-parrot" src="front.png"/>
-</div>
-<div class="back-face face">
-  <img src="fiestaparrot.gif"/>
-</div>
-</div>`,
-`<div class="card">
-<div class="front-face face">
-  <img class="front-parrot" src="front.png"/>
-</div>
-<div class="back-face face">
-  <img src="fiestaparrot.gif"/>
-</div>
-</div>`,
-`<div class="card">
-<div class="front-face face">
-  <img class="front-parrot" src="front.png"/>
-</div>
-<div class="back-face face">
-  <img src="metalparrot.gif"/>
-</div>
-</div>`,
-`<div class="card">
-<div class="front-face face">
-  <img class="front-parrot" src="front.png"/>
-</div>
-<div class="back-face face">
-  <img src="metalparrot.gif"/>
-</div>
-</div>`,
-`<div class="card">
-<div class="front-face face">
-  <img class="front-parrot" src="front.png"/>
-</div>
-<div class="back-face face">
-  <img src="revertitparrot.gif"/>
-</div>
-</div>`,
-`<div class="card">
-<div class="front-face face">
-  <img class="front-parrot" src="front.png"/>
-</div>
-<div class="back-face face">
-  <img src="revertitparrot.gif"/>
-</div>
-</div>`,
-`<div class="card">
-<div class="front-face face">
-  <img class="front-parrot" src="front.png"/>
-</div>
-<div class="back-face face">
-  <img src="tripletsparrot.gif"/>
-</div>
-</div>`,
-`<div class="card">
-<div class="front-face face">
-  <img class="front-parrot" src="front.png"/>
-</div>
-<div class="back-face face">
-  <img src="tripletsparrot.gif"/>
-</div>
-</div>`,
-`<div class="card">
+`<div class="card" onclick="armazenarCarta(this)">
 <div class="front-face face">
   <img class="front-parrot" src="front.png"/>
 </div>
@@ -155,11 +159,42 @@ function shuffle(array) {
     return array;
 }
 
-/*
-function virarCarta(card) {
-    card.classlist
+
+function virarCarta(cartavirada) {
+    cartavirada.classList.toggle("virada")
+   
+  }
+
+function armazenarCarta(cartavirada) {
+
+    virarCarta(cartavirada);
+    if(cartasSelecionadas.length<2){
+      cartasSelecionadas.push(cartavirada)
+      console.log(cartasSelecionadas);
+    }
+
+    if(cartasSelecionadas.length === 2){
+
+      validarCartas();
+    }
 }
-*/
 
-
+function validarCartas() {
   
+  if(cartasSelecionadas[0].innerHTML === cartasSelecionadas[1].innerHTML){
+    cartasSelecionadas = [];
+    acertos += 2;
+    console.log(acertos)
+
+      if(acertos === Number(qtdCartas)){
+        alert("Game Over");
+      }
+
+   } else{
+     
+    virarCarta(cartasSelecionadas[0]);
+    virarCarta(cartasSelecionadas[1]);
+    cartasSelecionadas = [];
+   }
+
+}
