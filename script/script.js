@@ -184,15 +184,13 @@ function validarCartas() {
     acertos += 2;
     console.log(acertos)
 
-      if(acertos === Number(qtdCartas)){
-        alert("Game Over");
-      }
+    if(acertos === Number(qtdCartas)){
+      alert("Game Over");
+    }
 
-   } else{
-     
+   }else{
     virarCarta(cartasSelecionadas[0]);
     virarCarta(cartasSelecionadas[1]);
     cartasSelecionadas = [];
    }
-
 }
